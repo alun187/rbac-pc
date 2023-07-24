@@ -1,4 +1,4 @@
-# rbac-pc
+# rbac-vue3-admin
 
 ## Project setup
 ```

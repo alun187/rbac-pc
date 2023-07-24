@@ -1,19 +1,58 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+
+
+import Department from '../views/bsns/Department'
+import Post from '../views/bsns/Post'
+import store from "@/store";
+
 
 const routes = [
   {
     path: '/',
-    name: 'home',
-    component: HomeView
+    name: '首页',
+    component: () => import('../layout'),
+    redirect:'/index',
+    children:[
+      {
+        path: '/index',
+        name: '首页',
+        component: () => import('../views/index/index')
+      },{
+        path: '/userCenter',
+        name: '个人中心',
+        component: () => import('../views/userCenter/index')
+      }
+    //   {
+    //     path:'/sys/user',
+    //     name:'用户管理',
+    //     component:User
+    //   },
+    //   {
+    //     path:'/sys/role',
+    //     name:'角色管理',
+    //     component:Role
+    //   },
+    //   {
+    //     path:'/sys/menu',
+    //     name:'菜单管理',
+    //     component:Menu
+    //   },
+    //   {
+    //     path:'/bsns/department',
+    //     name:'部门管理',
+    //     component:Department
+    //   },
+    //   {
+    //     path:'/bsns/post',
+    //     name:'岗位管理',
+    //     component:Post
+    //   }
+    ]
   },
   {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+    path: '/login',
+    name: 'login',
+    component: () => import('../views/Login.vue')
   }
 ]
 
@@ -21,5 +60,7 @@ const router = createRouter({
   history: createWebHashHistory(),
   routes
 })
+
+
 
 export default router
